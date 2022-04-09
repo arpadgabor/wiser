@@ -1,0 +1,6 @@
+{
+  "name": "wiser",
+  "region": "eu-central-1",
+  "lint": false,
+  "main": "stacks/index.ts"
+}
