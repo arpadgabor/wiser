@@ -6,7 +6,6 @@ import * as route53 from 'aws-cdk-lib/aws-route53'
 import * as route53_targets from 'aws-cdk-lib/aws-route53-targets'
 
 interface Props extends sst.StackProps {
-  domainName: string
   hostedZone: route53.IHostedZone
   fromEmail: string
 }

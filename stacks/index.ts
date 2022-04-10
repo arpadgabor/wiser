@@ -21,7 +21,6 @@ export default function main(app: sst.App): void {
 
   const auth = new AuthStack(app, 'auth', {
     hostedZone: domain.hostedZone,
-    domainName: config.envDomain,
     fromEmail: emails.fromEmail,
   })
 
