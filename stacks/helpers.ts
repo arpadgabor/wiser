@@ -3,9 +3,11 @@ import * as sst from '@serverless-stack/resources'
 const environments = ['dev', 'staging', 'prod']
 
 export const useConfig = (app: sst.App) => {
+  // ENV
   const isLocal: boolean = !environments.includes(app.stage)
   const env: string = environments.includes(app.stage) ? app.stage : 'dev'
 
+  // DOMAIN
   const baseDomain = process.env.BASE_DOMAIN
 
   const localDomainPrefix = isLocal ? app.stage : ''
@@ -13,6 +15,9 @@ export const useConfig = (app: sst.App) => {
 
   const apiDomain = [localDomainPrefix, envDomainPrefix, baseDomain].join('.')
   const envDomain = [envDomainPrefix, baseDomain].join('.')
+
+  // SES
+  const emails = process.env.SES_EMAILS?.split(',')
 
   return {
     env,
@@ -29,5 +34,7 @@ export const useConfig = (app: sst.App) => {
      * The base domain used by the environment. On local it will always be `dev.example.com` and on production it will be the base domain.
      */
     envDomain,
+
+    emails,
   }
 }
