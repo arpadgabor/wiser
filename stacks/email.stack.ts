@@ -15,6 +15,8 @@ interface Props extends sst.StackProps {
 }
 
 export default class EmailStack extends sst.Stack {
+  public fromEmail: string
+
   constructor(scope: sst.App, id: string, props: Props) {
     super(scope, id, props)
 
@@ -22,12 +24,14 @@ export default class EmailStack extends sst.Stack {
       domainName: props.domainName,
     })
 
-    if (Array.isArray(props.emails)) {
-      props.emails.forEach((email, i) => {
-        new VerifySesEmailAddress(this, `ses-email-${i}`, {
-          emailAddress: email,
-        })
+    this.fromEmail = 'noreply@' + props.domainName
+
+    const emails = [this.fromEmail, ...(props.emails || [])]
+
+    emails.forEach((email, i) => {
+      new VerifySesEmailAddress(this, `ses-email-${i}`, {
+        emailAddress: email,
       })
-    }
+    })
   }
 }
