@@ -24,5 +24,5 @@ export default function main(app: sst.App): void {
     fromEmail: emails.fromEmail,
   })
 
-  new MainStack(app, 'api')
+  new MainStack(app, 'api', { auth: auth.authClient })
 }

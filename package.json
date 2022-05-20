@@ -11,13 +11,14 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@serverless-stack/cli": "1.0.0-beta.9",
-    "@serverless-stack/resources": "1.0.0-beta.9",
     "@seeebiii/ses-verify-identities": "^4.0.0",
+    "@serverless-stack/cli": "1.0.0-beta.21",
+    "@serverless-stack/resources": "1.0.0-beta.21",
     "@tsconfig/node14": "^1.0.1",
-    "@types/aws-lambda": "^8.10.70",
+    "@types/aws-lambda": "^8.10.93",
     "@types/node": "<15.0.0",
-    "aws-cdk-lib": "2.15.0",
+    "aws-cdk-lib": "2.20.0",
+    "constructs": "^10.0.116",
     "typescript": "^4.6.3"
   }
 }

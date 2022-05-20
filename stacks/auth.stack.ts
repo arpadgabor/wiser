@@ -4,19 +4,20 @@ import * as cognito from 'aws-cdk-lib/aws-cognito'
 import * as acm from 'aws-cdk-lib/aws-certificatemanager'
 import * as route53 from 'aws-cdk-lib/aws-route53'
 import * as route53_targets from 'aws-cdk-lib/aws-route53-targets'
+import { Construct } from 'constructs'
 
-interface Props extends sst.StackProps {
+interface Props {
   hostedZone: route53.IHostedZone
   fromEmail: string
 }
 
-export default class AuthStack extends sst.Stack {
+export default class AuthStack extends Construct {
   public userPool: cognito.UserPool
   public userPoolClient: cognito.UserPoolClient
   public authClient: sst.Auth
 
   constructor(scope: sst.App, id: string, props: Props) {
-    super(scope, id, props)
+    super(scope, id)
 
     this.userPool = new cognito.UserPool(this, 'userPool', {
       userPoolName: 'userPool',
